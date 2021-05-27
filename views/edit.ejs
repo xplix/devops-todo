@@ -1,0 +1,36 @@
+<!--sectionHeader-->
+<%- include('sections/_header')  %> 
+<!--/sectionHeader-->
+ <!--MAIN INDEX-->
+ <form method="POST" class="noteinputt">
+     <div class="inputDiv">
+         <input type="text" class="input" name="notetext" placeholder="Edit your note here">
+         <button class="add"><i class="fas fa-plus"></i></button>
+     </div>
+     <div class="container">
+         <% if(typeof data !== 'undefined') { %>
+         <tbody>
+             <% for(var i = 0; i< data.length; i++) { %>
+             <tr>
+                 <td><%= data[i].text%></td>
+                 <div class="wrapbutt">
+                     <td></td><a class="edit container-child" href="../edit/<%=data[i].ID%>"><i
+                             class="fas fa-pencil-alt"></i></a></td>
+                     <td><a class="remove container-child" onclick="return alert('Are You sure?')"
+                             href="../delete/<%=data[i].ID%>"><i class="fas fa-trash-alt"></i></a></td>
+                     </td>
+                 </div>
+             </tr>
+             <% }
+
+           }else{ %>
+             <tr>
+                 <td>There is no Notes</td>
+             </tr>
+             <% } %>
+     </div>
+ </form>
+<!--/MAIN INDEX-->
+<!--sectionFooter-->
+<%- include('sections/_footer')  %> 
+<!--/sectionFooter-->
